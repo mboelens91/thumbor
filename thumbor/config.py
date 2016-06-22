@@ -120,6 +120,7 @@ Config.define(
     'python module (python must be able to import it)', 'Extensibility')
 
 Config.define('SECURITY_KEY', 'MY_SECURE_KEY', 'The security key thumbor uses to sign image URLs', 'Security')
+Config.define('ALLOWED_SIZES_IN_SECURITY_URL', [], '', '')
 
 Config.define('ALLOW_UNSAFE_URL', True, 'Indicates if the /unsafe URL should be available', 'Security')
 Config.define('ALLOW_OLD_URLS', True, 'Indicates if encrypted (old style) URLs should be allowed', 'Security')

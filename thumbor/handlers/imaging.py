@@ -66,6 +66,12 @@ class ImagingHandler(ContextHandler):
             url_to_validate = url.replace('/%s/' % self.context.request.hash, '') \
                 .replace('/%s/' % quote(self.context.request.hash), '')
 
+            if kw["height"] and kw["width"] and \
+               "%sx%s" % (kw["width"], kw["height"]) in \
+               self.context.config.ALLOWED_SIZES_IN_SECURITY_KEY:
+                url_to_validate = url_to_validate.replace(
+                    "%sx%s/" % (kw["width"], kw["height"]), "")
+
             valid = signer.validate(unquote(url_signature), url_to_validate)
 
             if not valid and self.context.config.STORES_CRYPTO_KEY_FOR_EACH_IMAGE:
